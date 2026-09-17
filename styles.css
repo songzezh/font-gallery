@@ -192,6 +192,64 @@ a {
   color: var(--text-dim);
 }
 
+/* 首页字体指南：以文字、留白和细分隔线组织内容 */
+.font-guide {
+  margin-top: 0;
+}
+
+.font-guide h1 {
+  font-size: var(--fs-heading-3);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-tight);
+}
+
+.font-list {
+  margin-top: var(--space-6);
+  padding-left: var(--space-6);
+}
+
+.font-list li {
+  padding: var(--space-5) 0 var(--space-5) var(--space-2);
+  border-top: 1px solid var(--border);
+}
+
+.font-list li::marker {
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+}
+
+.font-list article {
+  display: grid;
+  grid-template-columns: minmax(140px, 1fr) minmax(0, 2.3fr);
+  gap: var(--space-5);
+}
+
+.font-list h3 {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-normal);
+}
+
+.font-description p:first-child { margin-top: 0; }
+.font-description { max-width: 65ch; }
+.font-description .font-uses { font-size: var(--fs-sm); }
+.font-uses span { display: block; margin-bottom: var(--space-1); color: var(--text); font-weight: var(--fw-medium); }
+
+.references {
+  margin-top: var(--space-6);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--border);
+  font-size: var(--fs-caption);
+}
+
+.references p { margin-top: 0; }
+
+@media (max-width: 900px) {
+  .font-list article { grid-template-columns: minmax(0, 1fr); gap: var(--space-2); }
+}
+
 @media (max-width: 640px) {
   .app-layout { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto 1fr; }
   .sidebar { position: relative; height: auto; border-right: 0; border-bottom: 1px solid var(--border); }

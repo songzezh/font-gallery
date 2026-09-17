@@ -1,24 +1,96 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Font Gallery</title>
+  <meta name="description" content="Explore seven font categories, their defining characteristics, and where to use them.">
   <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-  <a class="skip-link" href="#main-content">跳转到内容</a>
+  <a class="skip-link" href="#main-content">Skip to content</a>
   <div class="app-layout">
     <aside class="sidebar" id="sidebar" aria-label="Sidebar">
-      <a class="brand" href="./index.html" aria-label="Font Gallery 首页" title="Font Gallery">
+      <a class="brand" href="./index.html" aria-label="Font Gallery home" title="Font Gallery">
         <span class="brand-mark" aria-hidden="true">F<span>.</span></span>
         <span class="brand-name" lang="en">Font Gallery</span>
       </a>
     </aside>
 
     <main class="page" id="main-content" tabindex="-1">
-      <h1>Font Gallery</h1>
-      <p lang="en">Discover the character in every type.</p>
+      <section class="font-guide" aria-labelledby="guide-title">
+        <h1 id="guide-title">Brief guide to font styles</h1>
+        <p class="guide-intro">Explore seven font categories, what makes them distinct, and where they work best.</p>
+
+        <ol class="font-list">
+          <li>
+            <article>
+              <h3>Serif Fonts</h3>
+              <div class="font-description">
+                <p>Serif fonts have small finishing strokes at the ends of letterforms. Familiar examples such as Times New Roman bring a traditional, established feel to a design.</p>
+                <p class="font-uses"><span>Common uses</span> Books, newspapers, and long-form editorial content.</p>
+              </div>
+            </article>
+          </li>
+          <li>
+            <article>
+              <h3>Sans-serif Fonts</h3>
+              <div class="font-description">
+                <p>Sans-serif fonts omit these finishing strokes, creating a clean, straightforward look. Their simple forms make them a common choice for digital interfaces.</p>
+                <p class="font-uses"><span>Common uses</span> Websites, mobile apps, and modern branding.</p>
+              </div>
+            </article>
+          </li>
+          <li>
+            <article>
+              <h3>Script Fonts</h3>
+              <div class="font-description">
+                <p>Script fonts draw on cursive handwriting, often featuring connected letters and flowing strokes. They can give a design an elegant, expressive character.</p>
+                <p class="font-uses"><span>Common uses</span> Formal invitations, announcements, and event stationery.</p>
+              </div>
+            </article>
+          </li>
+          <li>
+            <article>
+              <h3>Display Fonts</h3>
+              <div class="font-description">
+                <p>Display fonts are designed to stand out at large sizes. From bold and chunky to delicate and ornate, they prioritize personality and impact in short passages.</p>
+                <p class="font-uses"><span>Common uses</span> Headlines, titles, posters, and short statements.</p>
+              </div>
+            </article>
+          </li>
+          <li>
+            <article>
+              <h3>Monospace Fonts</h3>
+              <div class="font-description">
+                <p>Monospace fonts give every character the same horizontal space. This consistent width keeps text aligned and creates a distinctive, orderly rhythm.</p>
+                <p class="font-uses"><span>Common uses</span> Programming code, technical documents, and aligned text.</p>
+              </div>
+            </article>
+          </li>
+          <li>
+            <article>
+              <h3>Handwritten Fonts</h3>
+              <div class="font-description">
+                <p>Handwritten fonts capture the individuality of writing by hand, from casual notes to carefully drawn lettering. They add a personal, informal touch to a design.</p>
+                <p class="font-uses"><span>Common uses</span> Personal invitations, informal messages, and expressive brand logos.</p>
+              </div>
+            </article>
+          </li>
+          <li>
+            <article>
+              <h3>Decorative Fonts</h3>
+              <div class="font-description">
+                <p>Decorative fonts use distinctive embellishments or themed letterforms to create visual interest. Their styles range from ornate details to playful, illustrated shapes.</p>
+                <p class="font-uses"><span>Common uses</span> Special occasions, themed graphics, and decorative accents.</p>
+              </div>
+            </article>
+          </li>
+        </ol>
+      </section>
+      <footer class="references" aria-label="References">
+        <p>Reference: <a href="https://piktochart.com/blog/types-of-fonts/">Piktochart — Types of Fonts</a></p>
+      </footer>
     </main>
   </div>
 </body>
