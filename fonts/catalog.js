@@ -4,12 +4,56 @@ window.fontCatalog = {
   "sans-serif": [
     {
       "name": "Ubuntu Sans",
-      "path": "fonts/sans-serif/UbuntuSans"
+      "path": "fonts/sans-serif/UbuntuSans",
+      "variants": [
+        {
+          "filename": "UbuntuSans[wdth,wght].ttf",
+          "style": "normal",
+          "weight": 400
+        },
+        {
+          "filename": "UbuntuSans-Italic[wdth,wght].ttf",
+          "style": "italic",
+          "weight": 400
+        }
+      ],
+      "weightRange": [
+        100,
+        800
+      ]
     }
   ],
   "script": [],
   "display": [],
-  "monospace": [],
+  "monospace": [
+    {
+      "name": "Ubuntu Mono",
+      "path": "fonts/monospace/ubuntumono",
+      "variants": [
+        {
+          "filename": "UbuntuMono-Regular.ttf",
+          "style": "normal",
+          "weight": 400
+        },
+        {
+          "filename": "UbuntuMono-Italic.ttf",
+          "style": "italic",
+          "weight": 400
+        },
+        {
+          "filename": "UbuntuMono-Bold.ttf",
+          "style": "normal",
+          "weight": 700
+        },
+        {
+          "filename": "UbuntuMono-BoldItalic.ttf",
+          "style": "italic",
+          "weight": 700
+        }
+      ],
+      "weightRange": null
+    }
+  ],
   "handwritten": [],
   "decorative": []
 };
