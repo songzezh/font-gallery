@@ -31,7 +31,21 @@ for (const category of categories) {
     if (!match) throw new Error(`${relativePath}/METADATA.pb: missing family name`);
     const name = JSON.parse(match[1]);
     if (!name.trim()) throw new Error(`${relativePath}/METADATA.pb: empty family name`);
-    catalog[category].push({ name, path: relativePath });
+    const axis = [...metadata.matchAll(/axes\s*\{([^{}]*)\}/g)]
+      .map(match => match[1]).find(block => /tag:\s*"wght"/.test(block));
+    const weightRange = axis ? [Number(axis.match(/min_value:\s*([\d.]+)/)?.[1]), Number(axis.match(/max_value:\s*([\d.]+)/)?.[1])] : null;
+    if (weightRange && (!weightRange.every(Number.isFinite) || weightRange[0] > weightRange[1])) {
+      throw new Error(`${relativePath}: invalid weight range`);
+    }
+    const variants = [];
+    for (const [, block] of metadata.matchAll(/fonts\s*\{([^{}]*)\}/g)) {
+      const filename = JSON.parse(block.match(/filename:\s*("(?:\\.|[^"\\])*")/)?.[1] ?? 'null');
+      if (!filename || /[/\\]/.test(filename) || filename === '..') throw new Error(`${relativePath}: invalid filename`);
+      await readFile(path.join(directory, entry.name, filename));
+      variants.push({ filename, style: block.match(/style:\s*"(normal|italic)"/)?.[1] ?? 'normal',
+        weight: Number(block.match(/weight:\s*(\d+)/)?.[1] ?? 400) });
+    }
+    catalog[category].push({ name, path: relativePath, variants, weightRange });
   }
   catalog[category].sort((a, b) => a.name.localeCompare(b.name, 'en') || a.path.localeCompare(b.path, 'en'));
 }

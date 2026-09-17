@@ -12,7 +12,12 @@ for (const category of document.querySelectorAll('[data-font-category]')) {
   list.setAttribute('aria-label', `${category.querySelector('summary').textContent} fonts`);
   for (const font of fonts) {
     const item = document.createElement('li');
-    item.textContent = font.name;
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'font-choice';
+    button.textContent = font.name;
+    button.addEventListener('click', () => showFontPreview(font, button));
+    item.append(button);
     item.dataset.fontPath = font.path;
     list.append(item);
   }

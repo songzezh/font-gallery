@@ -206,9 +206,39 @@ a {
   font-size: var(--fs-sm);
 }
 .category-fonts li {
-  padding: var(--space-2) 0;
   overflow-wrap: anywhere;
 }
+.font-choice {
+  width: 100%;
+  padding: var(--space-2);
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  text-align: left;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+.font-choice:hover { background: var(--surface-2); }
+.font-choice[aria-current="true"] { background: var(--surface-2); color: var(--accent); font-weight: var(--fw-semibold); }
+
+/* 字体预览：使用侧边栏品牌链接返回首页 */
+.visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+.font-adjustments { margin-top: auto; padding-top: var(--space-6); flex-shrink: 0; }
+.font-adjustments[hidden] { display: none; }
+.adjustments-title { padding-top: var(--space-4); border-top: 1px solid var(--border); font-size: var(--fs-sm); font-weight: var(--fw-semibold); }
+.adjustments-status { color: var(--text-muted); font-size: var(--fs-xs); }
+.adjustments-status:not(:empty) { margin-top: var(--space-2); }
+.preview-controls { display: grid; gap: var(--space-4); min-width: 0; margin: var(--space-4) 0 0; padding: 0; border: 0; }
+.preview-controls label { display: grid; gap: var(--space-2); font-size: var(--fs-sm); }
+.preview-controls label > span { display: flex; align-items: center; gap: var(--space-3); min-height: 40px; }
+.preview-controls input { width: 100%; min-width: 0; accent-color: var(--accent); }
+.preview-controls output { min-width: 55px; white-space: nowrap; }
+.preview-controls select { min-height: 40px; padding: 0 var(--space-3); border: 1px solid var(--border); border-radius: 6px; background: var(--bg); }
+.font-sample { font-family: var(--specimen-family), sans-serif; font-weight: var(--specimen-weight, 400); font-style: var(--specimen-style, normal); font-synthesis: none; }
+#specimen-text { display: block; width: 100%; min-height: 260px; padding: 0; border: 0; background: var(--bg); font-size: 64px; line-height: 1.25; resize: vertical; }
+.specimen-row { margin-top: var(--space-6); padding-top: var(--space-5); border-top: 1px solid var(--border); }
+.page .glyph-sample { color: var(--text); font-size: clamp(20px, 3vw, 32px); line-height: 1.8; overflow-wrap: anywhere; }
+.page .reading-sample { max-width: 60ch; color: var(--text); font-size: 20px; line-height: 1.7; }
 .category-empty {
   margin: var(--space-1) var(--space-3) var(--space-3);
   padding-left: var(--space-3);
