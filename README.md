@@ -31,13 +31,39 @@ Font Gallery 是一个用于字体展示与比较的 Web 应用，采用原生 H
 
 ```text
 font-gallery/
+├── fonts/        # 按字体类型存放所有字体资源
+│   ├── serif/
+│   ├── sans-serif/
+│   ├── script/
+│   ├── display/
+│   ├── monospace/
+│   ├── handwritten/
+│   └── decorative/
 ├── LICENSE       # MIT 许可证
 ├── index.html    # 应用入口
 ├── styles.css    # 浅色主题变量与页面基础样式
 └── README.md     # 项目说明
 ```
 
-应用入口为项目根目录下的 `index.html`，通过相对路径引用 `styles.css`，不依赖第三方库。字体资源的目录结构将在实现时确定。
+应用入口为项目根目录下的 `index.html`，通过相对路径引用 `styles.css`，不依赖第三方库。
+
+## 字体存放规则
+
+所有字体文件统一放在项目根目录的 `fonts/` 下，按字体类型存入对应子目录。目录名与页面的 `data-font-category` 标识一致：
+
+| 字体类型 | 存放目录 |
+| --- | --- |
+| Serif（衬线体） | `fonts/serif/` |
+| Sans-serif（无衬线体） | `fonts/sans-serif/` |
+| Script（连笔字体） | `fonts/script/` |
+| Display（展示字体） | `fonts/display/` |
+| Monospace（等宽字体） | `fonts/monospace/` |
+| Handwritten（手写体） | `fonts/handwritten/` |
+| Decorative（装饰字体） | `fonts/decorative/` |
+
+字体按风格分类，`.woff2`、`.woff`、`.ttf`、`.otf` 等文件格式放在相应类型目录中。例如，衬线字体文件可放在 `fonts/serif/example-regular.woff2`，在根目录的 `styles.css` 中使用 `url("./fonts/serif/example-regular.woff2")` 引用。
+
+当前尚未添加字体文件。添加字体时，将来源说明与许可证一并存入对应分类目录，并同步更新页面中的字体列表与内容。
 
 ## 本地运行
 
