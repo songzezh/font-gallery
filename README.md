@@ -4,9 +4,9 @@ Font Gallery 是一个用于字体展示与比较的 Web 应用，采用原生 H
 
 > 当前首页包含七类字体的英文指南，按特点与常见用途整理，采用浅色主题和始终展开的侧边栏。字体预览与比较功能尚未实现。
 
-侧边栏使用原生 HTML 和 CSS，始终显示品牌，小屏幕采用纵向布局，不提供收起功能。
+侧边栏使用原生 HTML、CSS 和 JavaScript，始终显示品牌，小屏幕采用纵向布局，不提供收起功能。
 
-七类字体使用原生 `details` / `summary` 独立展开，支持鼠标和键盘操作，不关联首页说明。当前未添加字体，各分类显示空状态。后续添加字体时，在对应 `data-font-category` 的 `details` 内，将 `.category-empty` 替换为包含已添加字体名称的列表，并同步加入页面字体内容。
+七类字体使用原生 `details` / `summary` 独立展开，支持鼠标和键盘操作，不关联首页说明。展开分类后显示该类型下已有字体的名称，名称取自各字体文件夹内 `METADATA.pb` 的顶层 `name` 字段；同一字体的不同字重与斜体只显示一个字体家族名称。没有字体的分类继续显示空状态。当前已收录 Sans-serif 分类的 Ubuntu Sans，字体名称暂不提供预览交互。
 
 ## 项目目标
 
@@ -42,6 +42,9 @@ font-gallery/
 ├── LICENSE       # MIT 许可证
 ├── index.html    # 应用入口
 ├── styles.css    # 浅色主题变量与页面基础样式
+├── sidebar.js    # 侧边栏字体名称列表
+├── scripts/
+│   └── build-font-catalog.mjs # 扫描字体元数据并生成 fonts/catalog.js
 └── README.md     # 项目说明
 ```
 
@@ -61,9 +64,15 @@ font-gallery/
 | Handwritten（手写体） | `fonts/handwritten/` |
 | Decorative（装饰字体） | `fonts/decorative/` |
 
-字体按风格分类，`.woff2`、`.woff`、`.ttf`、`.otf` 等文件格式放在相应类型目录中。例如，衬线字体文件可放在 `fonts/serif/example-regular.woff2`，在根目录的 `styles.css` 中使用 `url("./fonts/serif/example-regular.woff2")` 引用。
+每个字体家族在类型目录下建立独立文件夹，里面存放文本格式的 `METADATA.pb`、字体文件、来源说明及许可证。例如：`fonts/sans-serif/UbuntuSans/METADATA.pb` 与 `fonts/sans-serif/UbuntuSans/UbuntuSans[wdth,wght].ttf`。分类以所在目录为准，显示名称取自元数据。
 
-当前尚未添加字体文件。添加字体时，将来源说明与许可证一并存入对应分类目录，并同步更新页面中的字体列表与内容。
+新增、删除或修改字体元数据后，在项目根目录运行（需要 Node.js）：
+
+```bash
+node scripts/build-font-catalog.mjs
+```
+
+脚本会扫描各分类的直接子文件夹，生成 `fonts/catalog.js`，刷新页面即可显示最新列表。缺少元数据的文件夹会提示并跳过，缺少有效名称则报错并保留原清单。生成清单需随项目一起提交；浏览器运行无需 Node.js，也无需依赖服务器目录索引。空分类目录即使未被 Git 保留，也会按空分类处理。
 
 ## 本地运行
 

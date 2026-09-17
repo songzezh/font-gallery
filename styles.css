@@ -197,6 +197,18 @@ a {
 .font-categories details[open] > summary::after { transform: rotate(45deg); }
 .font-categories summary:hover { background: var(--surface-2); color: var(--text); }
 .font-categories details[open] > summary { color: var(--text); font-weight: var(--fw-medium); }
+.category-fonts {
+  list-style: none;
+  margin: var(--space-1) var(--space-3) var(--space-3);
+  padding-left: var(--space-3);
+  border-left: 1px solid var(--border);
+  color: var(--text);
+  font-size: var(--fs-sm);
+}
+.category-fonts li {
+  padding: var(--space-2) 0;
+  overflow-wrap: anywhere;
+}
 .category-empty {
   margin: var(--space-1) var(--space-3) var(--space-3);
   padding-left: var(--space-3);
