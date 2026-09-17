@@ -45,6 +45,8 @@ font-gallery/
 ├── sidebar.js    # 侧边栏字体名称列表
 ├── scripts/
 │   └── build-font-catalog.mjs # 扫描字体元数据并生成 fonts/catalog.js
+├── docs/
+│   └── font-metadata.md # Google Fonts 元数据补充说明与收录要求
 └── README.md     # 项目说明
 ```
 
@@ -64,7 +66,9 @@ font-gallery/
 | Handwritten（手写体） | `fonts/handwritten/` |
 | Decorative（装饰字体） | `fonts/decorative/` |
 
-每个字体家族在类型目录下建立独立文件夹，里面存放文本格式的 `METADATA.pb`、字体文件、来源说明及许可证。例如：`fonts/sans-serif/UbuntuSans/METADATA.pb` 与 `fonts/sans-serif/UbuntuSans/UbuntuSans[wdth,wght].ttf`。分类以所在目录为准，显示名称取自元数据。
+每个字体家族在类型目录下建立独立文件夹，里面存放文本格式的 `METADATA.pb`、字体文件、来源说明及许可证。例如：`fonts/sans-serif/UbuntuSans/METADATA.pb` 与 `fonts/sans-serif/UbuntuSans/UbuntuSans[wdth,wght].ttf`。分类以所在目录为准，显示名称、字体文件与样式取自元数据；可变字重范围取自 `wght` 轴。扫描时检查元数据引用的字体文件是否存在，预览时按需加载字体。
+
+**所有收录字体必须按照 [字体元数据补充说明](docs/font-metadata.md) 提供 `METADATA.pb`，不得仅添加字体文件。** 每个字体家族共用一份元数据，其中每个字体文件（含各字重与斜体）均须有对应的 `fonts` 块；可变字体还须声明对外提供的轴及范围。该要求适用于现有与新增字体。字段含义、文件命名、字符子集和验收步骤详见补充说明。
 
 新增、删除或修改字体元数据后，在项目根目录运行（需要 Node.js）：
 
@@ -96,6 +100,7 @@ python -m http.server 8000
 - 以 `index.html` 为入口，使用相对路径引用样式、脚本及资源。
 - 按职责组织页面结构、样式和交互逻辑。
 - 添加字体资源时，记录来源并确认其使用与分发授权。
+- 所有字体必须遵循 [字体元数据补充说明](docs/font-metadata.md)，同步维护家族目录内的 `METADATA.pb` 和生成的 `fonts/catalog.js`。脚本跳过缺少元数据的目录不代表允许其入库。
 - 功能或运行方式发生变化时，同步更新本说明。
 
 ## 许可证
