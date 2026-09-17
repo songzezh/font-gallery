@@ -127,12 +127,56 @@ a {
   outline-offset: 4px;
 }
 
-/* 初始化页面的内容容器 */
+/* 侧边栏：始终展开，小屏幕采用纵向布局 */
+.app-layout {
+  --sidebar-width: 248px;
+  display: grid;
+  grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+  min-height: 100vh;
+}
+
+.sidebar {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  height: 100dvh;
+  padding: var(--space-5) var(--space-4);
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  color: var(--text);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.brand-mark {
+  flex: 0 0 43px;
+  text-align: center;
+  font-family: var(--font-serif);
+  font-size: var(--fs-3xl);
+  line-height: 44px;
+}
+
+.brand-mark span { color: var(--accent); }
+.brand-name { font-weight: var(--fw-semibold); letter-spacing: var(--ls-tight); }
+
+.skip-link { position: fixed; top: var(--space-2); left: var(--space-2); z-index: var(--z-modal); padding: var(--space-2) var(--space-4); background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); transform: translateY(-200%); }
+.skip-link:focus { transform: translateY(0); }
+
+/* 页面内容 */
 .page {
   width: 100%;
   max-width: var(--max-w);
   margin-inline: auto;
-  padding: var(--space-6) var(--space-4);
+  padding: clamp(32px, 7vw, 96px) clamp(24px, 5vw, 72px);
 }
 
 .page h1 {
@@ -146,6 +190,12 @@ a {
 .page p {
   margin-top: var(--space-3);
   color: var(--text-dim);
+}
+
+@media (max-width: 640px) {
+  .app-layout { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto 1fr; }
+  .sidebar { position: relative; height: auto; border-right: 0; border-bottom: 1px solid var(--border); }
+  .page h1 { font-size: var(--fs-heading-2); }
 }
 
 @media (prefers-reduced-motion: reduce) {
