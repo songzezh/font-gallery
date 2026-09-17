@@ -168,6 +168,42 @@ a {
 .brand-mark span { color: var(--accent); }
 .brand-name { font-weight: var(--fw-semibold); letter-spacing: var(--ls-tight); }
 
+/* 字体分类列表 */
+.font-categories { margin-top: var(--space-6); }
+.font-categories > ul { list-style: none; padding: 0; display: grid; gap: var(--space-1); }
+.font-categories summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  min-height: 44px;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  color: var(--text-dim);
+  font-size: var(--fs-sm);
+  list-style: none;
+  cursor: pointer;
+}
+.font-categories summary::-webkit-details-marker { display: none; }
+.font-categories summary::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  flex-shrink: 0;
+  border-right: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+  transform: rotate(-45deg);
+}
+.font-categories details[open] > summary::after { transform: rotate(45deg); }
+.font-categories summary:hover { background: var(--surface-2); color: var(--text); }
+.font-categories details[open] > summary { color: var(--text); font-weight: var(--fw-medium); }
+.category-empty {
+  margin: var(--space-1) var(--space-3) var(--space-3);
+  padding-left: var(--space-3);
+  border-left: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: var(--fs-caption);
+}
 .skip-link { position: fixed; top: var(--space-2); left: var(--space-2); z-index: var(--z-modal); padding: var(--space-2) var(--space-4); background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); transform: translateY(-200%); }
 .skip-link:focus { transform: translateY(0); }
 
@@ -253,6 +289,7 @@ a {
 @media (max-width: 640px) {
   .app-layout { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto 1fr; }
   .sidebar { position: relative; height: auto; border-right: 0; border-bottom: 1px solid var(--border); }
+  .font-categories > ul { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
   .page h1 { font-size: var(--fs-heading-2); }
 }
 
